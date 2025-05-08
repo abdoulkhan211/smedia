@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S-MEDIA TAHOUA | Live</title>
+    <style>
+        :root {
+            --primary: #1a73e8;
+            --secondary: #e94235;
+            --accent: #fbbc05;
+            --dark: #202124;
+            --light: #f8f9fa;
+            --live-red: #ff0000;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: var(--dark);
+            line-height: 1.6;
+            padding-bottom: 80px;
+        }
+        
+        .header {
+            background: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo {
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 8px;
+            color: var(--secondary);
+        }
+        
+        .live-indicator {
+            background: var(--live-red);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+        
+        .main-content {
+            padding: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .live-container {
+            background: black;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+        
+        .live-player {
+            width: 100%;
+            height: 500px;
+            background: #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            position: relative;
+        }
+        
+        .live-info {
+            padding: 1.5rem;
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+        }
+        
+        .live-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--dark);
+        }
+        
+        .live-stats {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .live-stats span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .live-description {
+            color: #555;
+            line-height: 1.7;
+        }
+        
+        .upcoming-section {
+            margin-top: 3rem;
+        }
+        
+        .section-title {
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .upcoming-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .upcoming-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .upcoming-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .upcoming-thumbnail {
+            height: 160px;
+            background: linear-gradient(45deg, #f5f5f5, #e0e0e0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            position: relative;
+        }
+        
+        .upcoming-time {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+        
+        .upcoming-details {
+            padding: 1.2rem;
+        }
+        
+        .upcoming-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .upcoming-desc {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            display: flex;
+            justify-content: space-around;
+            padding: 12px 0;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #5f6368;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-item i {
+            font-size: 1.4rem;
+            margin-bottom: 4px;
+        }
+        
+        .nav-item.active {
+            color: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .nav-item.active i {
+            color: var(--secondary);
+        }
+        
+        .no-live {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+        }
+        
+        @media (max-width: 768px) {
+            .live-player {
+                height: 300px;
+            }
+            
+            .live-stats {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .upcoming-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- En-tête -->
+    <header class="header">
+        <div class="logo">
+            <i class="fas fa-satellite-dish"></i>
+            <span>S-MEDIA TAHOUA</span>
+        </div>
+        <div class="live-indicator">
+            <div class="pulse-dot"></div>
+            EN DIRECT
+        </div>
+    </header>
+    
+    <!-- Contenu principal -->
+    <main class="main-content">
+        <!-- Lecteur de live -->
+        <div class="live-container">
+            <div class="live-player">
+                <!-- Intégration Facebook Live -->
+                <div class="fb-video" 
+                     data-href="https://www.facebook.com/share/18X6aPtGmf/" 
+                     data-width="100%" 
+                     data-autoplay="true"
+                     data-show-text="false">
+                </div>
+                
+                <!-- Message si le live ne charge pas -->
+                <div class="no-live" id="noLive" style="display: none;">
+                    <i class="fas fa-broadcast-tower" style="font-size: 2rem; margin-bottom: 1rem;"></i>
+                    <p>Aucune diffusion en cours pour le moment</p>
+                    <p>Consultez notre programmation ci-dessous</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Informations sur le live -->
+        <div class="live-info">
+            <h1 class="live-title">Émission en direct de S-MEDIA TAHOUA</h1>
+            <div class="live-stats">
+                <span><i class="fas fa-eye"></i> <span id="viewers">1,245</span> spectateurs</span>
+                <span><i class="fas fa-comment"></i> <span id="comments">328</span> commentaires</span>
+                <span><i class="fas fa-share"></i> <span id="shares">56</span> partages</span>
+            </div>
+            <div class="live-description">
+                Ne manquez pas notre émission en direct avec des débats, des analyses et des invités spéciaux. 
+                Posez vos questions en commentaire et interagissez avec notre équipe en temps réel.
+            </div>
+        </div>
+        
+        <!-- Programmation des prochains lives -->
+        <div class="upcoming-section">
+            <h2 class="section-title">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Programmation des directs</span>
+            </h2>
+            
+            <div class="upcoming-grid">
+                <!-- Émission 1 -->
+                <div class="upcoming-card">
+                    <div class="upcoming-thumbnail">
+                        <i class="fas fa-video" style="font-size: 2rem;"></i>
+                        <span class="upcoming-time">Aujourd'hui, 18h</span>
+                    </div>
+                    <div class="upcoming-details">
+                        <h3 class="upcoming-title">Débat communautaire</h3>
+                        <p class="upcoming-desc">Discussion sur les enjeux locaux avec les responsables de la région.</p>
+                    </div>
+                </div>
+                
+                <!-- Émission 2 -->
+                <div class="upcoming-card">
+                    <div class="upcoming-thumbnail">
+                        <i class="fas fa-video" style="font-size: 2rem;"></i>
+                        <span class="upcoming-time">Demain, 10h</span>
+                    </div>
+                    <div class="upcoming-details">
+                        <h3 class="upcoming-title">Cours spécial</h3>
+                        <p class="upcoming-desc">Session éducative avec notre enseignant principal.</p>
+                    </div>
+                </div>
+                
+                <!-- Émission 3 -->
+                <div class="upcoming-card">
+                    <div class="upcoming-thumbnail">
+                        <i class="fas fa-video" style="font-size: 2rem;"></i>
+                        <span class="upcoming-time">12/06, 15h</span>
+                    </div>
+                    <div class="upcoming-details">
+                        <h3 class="upcoming-title">Interview exclusive</h3>
+                        <p class="upcoming-desc">Rencontre avec une personnalité importante de Tahoua.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Navigation inférieure -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>Accueil</span>
+        </a>
+        <a href="videos.html" class="nav-item">
+            <i class="fas fa-play-circle"></i>
+            <span>Vidéos</span>
+        </a>
+        <a href="live.html" class="nav-item active">
+            <i class="fas fa-broadcast-tower"></i>
+            <span>Direct</span>
+        </a>
+        <a href="contact.html" class="nav-item">
+            <i class="fas fa-envelope"></i>
+            <span>Contact</span>
+        </a>
+    </nav>
+
+    <!-- SDK Facebook -->
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" 
+            src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v18.0">
+    </script>
+
+    <script>
+        // Vérification du statut du live
+        function checkLiveStatus() {
+            // En production, vous devriez faire une requête API pour vérifier
+            // si le live est actif. Ceci est une simulation.
+            setTimeout(() => {
+                const liveElement = document.querySelector('.fb-video');
+                if (!liveElement || liveElement.clientHeight === 0) {
+                    document.getElementById('noLive').style.display = 'block';
+                }
+            }, 5000);
+        }
+        
+        // Mise à jour dynamique des statistiques
+        function updateStats() {
+            // Simulation d'augmentation des viewers
+            const viewers = document.getElementById('viewers');
+            const comments = document.getElementById('comments');
+            const shares = document.getElementById('shares');
+            
+            if (viewers) {
+                const current = parseInt(viewers.textContent.replace(/,/g, ''));
+                const change = Math.floor(Math.random() * 10) - 2;
+                viewers.textContent = Math.max(1245, current + change).toLocaleString();
+            }
+            
+            if (comments) {
+                const current = parseInt(comments.textContent);
+                comments.textContent = current + Math.floor(Math.random() * 3);
+            }
+            
+            if (shares) {
+                const current = parseInt(shares.textContent);
+                if (Math.random() > 0.7) {
+                    shares.textContent = current + 1;
+                }
+            }
+        }
+        
+        // Démarrer les fonctions
+        document.addEventListener('DOMContentLoaded', () => {
+            checkLiveStatus();
+            setInterval(updateStats, 5000);
+        });
+    </script>
+</body>
+</html>
