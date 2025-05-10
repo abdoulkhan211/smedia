@@ -6,89 +6,105 @@
     <title>S-MEDIA TAHOUA | Live</title>
     <style>
         :root {
-            --primary: #1a73e8;
-            --secondary: #e94235;
-            --accent: #fbbc05;
-            --dark: #202124;
-            --light: #f8f9fa;
-            --live-red: #ff0000;
+            --primary: #007AFF;
+            --secondary: #34C759;
+            --accent: #FF9500;
+            --dark: #1C1C1E;
+            --light: #F2F2F7;
+            --live-red: #FF3B30;
+            --card-bg: #FFFFFF;
+            --card-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            --section-bg: #F2F2F7;
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
         
         body {
-            background-color: #f5f5f5;
+            background-color: var(--section-bg);
             color: var(--dark);
             line-height: 1.6;
-            padding-bottom: 80px;
+            padding-bottom: 90px;
+            -webkit-font-smoothing: antialiased;
         }
         
         .header {
-            background: white;
-            padding: 1rem;
+            background: var(--card-bg);
+            padding: 15px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 1px 0 rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
             z-index: 100;
+            backdrop-filter: blur(10px);
+            background-color: rgba(255,255,255,0.8);
         }
         
         .logo {
-            font-weight: bold;
+            font-weight: 600;
             color: var(--primary);
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             display: flex;
             align-items: center;
+            letter-spacing: -0.5px;
         }
         
         .logo i {
-            margin-right: 8px;
-            color: var(--secondary);
+            margin-right: 10px;
+            color: var(--primary);
+            font-size: 1.1em;
         }
         
         .live-indicator {
             background: var(--live-red);
             color: white;
-            padding: 0.3rem 0.8rem;
+            padding: 6px 12px;
             border-radius: 50px;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             display: flex;
             align-items: center;
             gap: 6px;
-            animation: pulse 2s infinite;
+            font-weight: 500;
+            box-shadow: 0 2px 8px rgba(255,59,48,0.3);
+        }
+        
+        .live-indicator i {
+            font-size: 0.8em;
+            animation: pulse 1.5s infinite;
         }
         
         @keyframes pulse {
             0% { opacity: 1; }
-            50% { opacity: 0.7; }
+            50% { opacity: 0.5; }
             100% { opacity: 1; }
         }
         
         .main-content {
-            padding: 1.5rem;
-            max-width: 1200px;
+            padding: 0 20px;
+            max-width: 800px;
             margin: 0 auto;
         }
         
         .live-container {
             background: black;
-            border-radius: 12px;
+            border-radius: 16px;
             overflow: hidden;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            margin: 20px 0;
+            box-shadow: var(--card-shadow);
+            position: relative;
         }
         
         .live-player {
             width: 100%;
-            height: 500px;
-            background: #111;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            background: #000;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -96,63 +112,122 @@
             position: relative;
         }
         
+        .live-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #1C1C1E, #2C2C2E);
+        }
+        
+        .live-placeholder i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .watch-on-fb-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 20px;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0,122,255,0.3);
+        }
+        
+        .watch-on-fb-btn:hover {
+            background: #0066CC;
+            transform: translateY(-2px);
+        }
+        
+        .watch-on-fb-btn i {
+            margin-right: 8px;
+            font-size: 1.1em;
+        }
+        
         .live-info {
-            padding: 1.5rem;
-            background: white;
-            border-radius: 10px;
-            margin-bottom: 2rem;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+            padding: 20px;
+            background: var(--card-bg);
+            border-radius: 16px;
+            margin-bottom: 25px;
+            box-shadow: var(--card-shadow);
         }
         
         .live-title {
             font-size: 1.5rem;
-            margin-bottom: 0.8rem;
+            margin-bottom: 12px;
             color: var(--dark);
+            font-weight: 600;
         }
         
         .live-stats {
             display: flex;
-            gap: 1.5rem;
-            margin-bottom: 1rem;
-            color: #666;
+            gap: 20px;
+            margin-bottom: 15px;
+            color: #636366;
             font-size: 0.9rem;
+            flex-wrap: wrap;
         }
         
         .live-stats span {
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 6px;
+        }
+        
+        .live-stats i {
+            font-size: 1em;
+            color: var(--primary);
         }
         
         .live-description {
-            color: #555;
+            color: #636366;
             line-height: 1.7;
+            font-size: 0.95rem;
         }
         
         .upcoming-section {
-            margin-top: 3rem;
+            margin-top: 30px;
         }
         
         .section-title {
             font-size: 1.4rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 20px;
             color: var(--dark);
             display: flex;
             align-items: center;
             gap: 10px;
+            font-weight: 600;
+        }
+        
+        .section-title i {
+            color: var(--primary);
         }
         
         .upcoming-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: 1fr;
+            gap: 15px;
         }
         
         .upcoming-card {
-            background: white;
-            border-radius: 10px;
+            background: var(--card-bg);
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+            box-shadow: var(--card-shadow);
             transition: transform 0.3s ease;
         }
         
@@ -161,39 +236,47 @@
         }
         
         .upcoming-thumbnail {
-            height: 160px;
-            background: linear-gradient(45deg, #f5f5f5, #e0e0e0);
+            height: 180px;
+            background: linear-gradient(135deg, #F2F2F7, #E5E5EA);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #999;
+            color: #AEAEB2;
             position: relative;
+        }
+        
+        .upcoming-thumbnail i {
+            font-size: 2.5rem;
+            opacity: 0.8;
         }
         
         .upcoming-time {
             position: absolute;
-            bottom: 10px;
-            left: 10px;
-            background: rgba(0,0,0,0.7);
+            bottom: 12px;
+            left: 12px;
+            background: rgba(0,0,0,0.8);
             color: white;
-            padding: 0.3rem 0.6rem;
-            border-radius: 4px;
+            padding: 6px 12px;
+            border-radius: 50px;
             font-size: 0.8rem;
+            font-weight: 500;
         }
         
         .upcoming-details {
-            padding: 1.2rem;
+            padding: 18px;
         }
         
         .upcoming-title {
             font-weight: 600;
-            margin-bottom: 0.5rem;
+            margin-bottom: 8px;
             color: var(--dark);
+            font-size: 1.1rem;
         }
         
         .upcoming-desc {
-            color: #666;
+            color: #636366;
             font-size: 0.9rem;
+            line-height: 1.6;
         }
         
         .bottom-nav {
@@ -201,12 +284,13 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: white;
+            background: rgba(255,255,255,0.9);
             display: flex;
             justify-content: space-around;
             padding: 12px 0;
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.1);
             z-index: 100;
+            backdrop-filter: blur(20px);
         }
         
         .nav-item {
@@ -214,9 +298,11 @@
             flex-direction: column;
             align-items: center;
             text-decoration: none;
-            color: #5f6368;
-            font-size: 0.8rem;
+            color: #8E8E93;
+            font-size: 0.75rem;
             transition: all 0.3s ease;
+            padding: 8px 12px;
+            border-radius: 50px;
         }
         
         .nav-item i {
@@ -226,45 +312,74 @@
         
         .nav-item.active {
             color: var(--primary);
-            transform: translateY(-5px);
+            background: rgba(0,122,255,0.1);
         }
         
         .nav-item.active i {
-            color: var(--secondary);
+            color: var(--primary);
         }
         
-        .no-live {
+        .stats-container {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .stat-box {
+            flex: 1;
+            background: var(--section-bg);
+            border-radius: 12px;
+            padding: 15px;
             text-align: center;
-            padding: 2rem;
-            color: #666;
         }
         
-        @media (max-width: 768px) {
-            .live-player {
-                height: 300px;
-            }
-            
-            .live-stats {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-            
+        .stat-value {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.75rem;
+            color: #8E8E93;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        @media (min-width: 768px) {
             .upcoming-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
             }
+            
+            .live-player {
+                height: 450px;
+                padding-bottom: 0;
+            }
+        }
+        
+        /* Animation pour le bouton */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .floating-btn {
+            animation: float 3s ease-in-out infinite;
         }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- En-tête -->
+    <!-- En-tête iOS-style -->
     <header class="header">
         <div class="logo">
             <i class="fas fa-satellite-dish"></i>
             <span>S-MEDIA TAHOUA</span>
         </div>
         <div class="live-indicator">
-            <div class="pulse-dot"></div>
+            <i class="fas fa-circle"></i>
             EN DIRECT
         </div>
     </header>
@@ -274,43 +389,58 @@
         <!-- Lecteur de live -->
         <div class="live-container">
             <div class="live-player">
-                <!-- Intégration Facebook Live -->
-                <div class="fb-video" 
-                     data-href="https://www.facebook.com/v/1EgovV1oEt" 
-                     data-width="100%" 
-                     data-autoplay="true"
-                     data-show-text="false">
-                    
-                </div>
-                
-                <!-- Message si le live ne charge pas -->
-                <div class="no-live" id="noLive" style="display: none;">
-                    <i class="fas fa-broadcast-tower" style="font-size: 2rem; margin-bottom: 1rem;"></i>
-                    <p>Aucune diffusion en cours pour le moment</p>
-                    <p>Consultez notre programmation ci-dessous</p>
-                    <input type="submit" name="type" type="" href="https://www.facebook.com/share/v/1EgovV1oEt/"></input>
+                <div class="live-placeholder">
+                    <i class="fas fa-broadcast-tower"></i>
+                    <h3 style="margin-bottom: 10px; font-weight: 500;">Émission en cours sur Facebook</h3>
+                    <p style="margin-bottom: 15px; opacity: 0.8; max-width: 300px;">Rejoignez la diffusion en direct sur Facebook pour interagir avec notre communauté</p>
+                    <a href="https://www.facebook.com/SMediaTahoua/live" class="watch-on-fb-btn floating-btn">
+                        <i class="fab fa-facebook"></i>
+                        Regarder sur Facebook
+                    </a>
                 </div>
             </div>
         </div>
         
         <!-- Informations sur le live -->
         <div class="live-info">
-            <h1 class="live-title">Émission en direct de S-MEDIA TAHOUA</h1>
-            <div class="live-stats">
-                <span><i class="fas fa-eye"></i> <span id="viewers">5</span> spectateurs</span>
-                <span><i class="fas fa-comment"></i> <span id="comments">0</span> commentaires</span>
-                <span><i class="fas fa-share"></i> <span id="shares">1</span> partages</span>
+            <h1 class="live-title">Émission Spéciale - Débat Communautaire</h1>
+            
+            <div class="stats-container">
+                <div class="stat-box">
+                    <div class="stat-value" id="viewers">2.4K</div>
+                    <div class="stat-label">Spectateurs</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="comments">156</div>
+                    <div class="stat-label">Commentaires</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="shares">89</div>
+                    <div class="stat-label">Partages</div>
+                </div>
             </div>
+            
             <div class="live-description">
-                Ne manquez pas notre émission en direct avec des débats, des analyses et des invités spéciaux. 
-                Posez vos questions en commentaire et interagissez avec notre équipe en temps réel.
+                <p>Ne manquez pas notre émission spéciale en direct avec des débats sur les enjeux locaux de Tahoua. Nos invités incluent le Maire de Tahoua, des responsables éducatifs et des leaders communautaires.</p>
+                <p style="margin-top: 10px;">Posez vos questions en commentaire sur Facebook et interagissez en direct avec notre équipe. Cette émission est diffusée simultanément sur notre page Facebook et notre application mobile.</p>
+            </div>
+            
+            <div style="margin-top: 20px; display: flex; gap: 10px;">
+                <a href="https://www.facebook.com/SMediaTahoua/live" class="watch-on-fb-btn" style="padding: 10px 20px; font-size: 0.9rem;">
+                    <i class="fab fa-facebook"></i>
+                    Rejoindre le direct
+                </a>
+                <a href="https://www.facebook.com/SMediaTahoua" class="watch-on-fb-btn" style="padding: 10px 20px; font-size: 0.9rem; background: #3A3A3C;">
+                    <i class="fas fa-thumbs-up"></i>
+                    Suivre notre page
+                </a>
             </div>
         </div>
         
         <!-- Programmation des prochains lives -->
         <div class="upcoming-section">
             <h2 class="section-title">
-                <i class="fas fa-calendar-alt"></i>
+                <i class="fas fa-calendar-day"></i>
                 <span>Programmation des directs</span>
             </h2>
             
@@ -318,117 +448,123 @@
                 <!-- Émission 1 -->
                 <div class="upcoming-card">
                     <div class="upcoming-thumbnail">
-                        <i class="fas fa-video" style="font-size: 2rem;"></i>
+                        <i class="fas fa-users"></i>
                         <span class="upcoming-time">Aujourd'hui, 18h</span>
                     </div>
                     <div class="upcoming-details">
-                        <h3 class="upcoming-title">Débat communautaire</h3>
-                        <p class="upcoming-desc">Discussion sur les enjeux locaux avec les responsables de la région.</p>
+                        <h3 class="upcoming-title">Débat Communautaire</h3>
+                        <p class="upcoming-desc">Discussion sur les projets de développement de la ville avec les autorités locales et les représentants des quartiers.</p>
                     </div>
                 </div>
                 
                 <!-- Émission 2 -->
                 <div class="upcoming-card">
                     <div class="upcoming-thumbnail">
-                        <i class="fas fa-video" style="font-size: 2rem;"></i>
+                        <i class="fas fa-graduation-cap"></i>
                         <span class="upcoming-time">Demain, 10h</span>
                     </div>
                     <div class="upcoming-details">
-                        <h3 class="upcoming-title">Cours spécial</h3>
-                        <p class="upcoming-desc">Session éducative avec notre enseignant principal.</p>
+                        <h3 class="upcoming-title">Cours de Soutien</h3>
+                        <p class="upcoming-desc">Session éducative en direct pour les élèves de terminale avec le professeur Mahamane Alassane.</p>
                     </div>
                 </div>
                 
                 <!-- Émission 3 -->
                 <div class="upcoming-card">
                     <div class="upcoming-thumbnail">
-                        <i class="fas fa-video" style="font-size: 2rem;"></i>
-                        <span class="upcoming-time">12/06, 15h</span>
+                        <i class="fas fa-microphone-alt"></i>
+                        <span class="upcoming-time">15/06, 15h</span>
                     </div>
                     <div class="upcoming-details">
-                        <h3 class="upcoming-title">Interview exclusive</h3>
-                        <p class="upcoming-desc">Rencontre avec une personnalité importante de Tahoua.</p>
+                        <h3 class="upcoming-title">Interview Exclusive</h3>
+                        <p class="upcoming-desc">Rencontre avec le Gouverneur de la région de Tahoua sur les projets en cours.</p>
+                    </div>
+                </div>
+                
+                <!-- Émission 4 -->
+                <div class="upcoming-card">
+                    <div class="upcoming-thumbnail">
+                        <i class="fas fa-futbol"></i>
+                        <span class="upcoming-time">20/06, 16h</span>
+                    </div>
+                    <div class="upcoming-details">
+                        <h3 class="upcoming-title">Coupe Régionale</h3>
+                        <p class="upcoming-desc">Retransmission en direct du match AS Tahoua vs JS Tassara avec commentaires experts.</p>
                     </div>
                 </div>
             </div>
         </div>
     </main>
     
-    <!-- Navigation inférieure -->
+    <!-- Navigation inférieure style iOS -->
     <nav class="bottom-nav">
         <a href="index.html" class="nav-item">
             <i class="fas fa-home"></i>
             <span>Accueil</span>
         </a>
         <a href="videos.html" class="nav-item">
-            <i class="fas fa-play-circle"></i>
+            <i class="fas fa-play"></i>
             <span>Vidéos</span>
         </a>
-        
         <a href="live.html" class="nav-item active">
             <i class="fas fa-broadcast-tower"></i>
             <span>Direct</span>
         </a>
-
         <a href="app.html" class="nav-item">
             <i class="fas fa-mobile-alt"></i>
             <span>App</span>
         </a>
-        <a href="contact.html" class="nav-item">
-            <i class="fas fa-envelope"></i>
-            <span>Contact</span>
+        <a href="profile.html" class="nav-item">
+            <i class="fas fa-user"></i>
+            <span>Profil</span>
         </a>
     </nav>
 
-    <!-- SDK Facebook -->
-    <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous" 
-            src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v18.0">
-    </script>
-
     <script>
-        // Vérification du statut du live
-        function checkLiveStatus() {
-            // En production, vous devriez faire une requête API pour vérifier
-            // si le live est actif. Ceci est une simulation.
-            setTimeout(() => {
-                const liveElement = document.querySelector('.fb-video');
-                if (!liveElement || liveElement.clientHeight === 0) {
-                    document.getElementById('noLive').style.display = 'block';
-                }
-            }, 5000);
-        }
-        
         // Mise à jour dynamique des statistiques
         function updateStats() {
-            // Simulation d'augmentation des viewers
-            const viewers = document.getElementById('viewers');
-            const comments = document.getElementById('comments');
-            const shares = document.getElementById('shares');
+            // Formats numériques
+            const formatNumber = (num) => {
+                if (num >= 1000) {
+                    return (num / 1000).toFixed(1) + 'K';
+                }
+                return num.toString();
+            };
             
-            if (viewers) {
-                const current = parseInt(viewers.textContent.replace(/,/g, ''));
-                const change = Math.floor(Math.random() * 10) - 2;
-                viewers.textContent = Math.max(1245, current + change).toLocaleString();
+            // Mise à jour des viewers (entre 2K et 3K)
+            const viewersElement = document.getElementById('viewers');
+            if (viewersElement) {
+                const current = parseFloat(viewersElement.textContent.replace('K', '')) * 1000 || 2400;
+                const change = Math.floor(Math.random() * 200) - 50;
+                viewersElement.textContent = formatNumber(Math.max(2000, current + change));
             }
             
-            if (comments) {
-                const current = parseInt(comments.textContent);
-                comments.textContent = current + Math.floor(Math.random() * 3);
+            // Mise à jour des commentaires
+            const commentsElement = document.getElementById('comments');
+            if (commentsElement) {
+                const current = parseInt(commentsElement.textContent) || 156;
+                commentsElement.textContent = current + Math.floor(Math.random() * 5);
             }
             
-            if (shares) {
-                const current = parseInt(shares.textContent);
-                if (Math.random() > 0.7) {
-                    shares.textContent = current + 1;
+            // Mise à jour des partages
+            const sharesElement = document.getElementById('shares');
+            if (sharesElement) {
+                const current = parseInt(sharesElement.textContent) || 89;
+                if (Math.random() > 0.8) {
+                    sharesElement.textContent = current + 1;
                 }
             }
         }
         
         // Démarrer les fonctions
         document.addEventListener('DOMContentLoaded', () => {
-            checkLiveStatus();
+            // Mettre à jour les stats toutes les 5 secondes
             setInterval(updateStats, 5000);
+            
+            // Animation au chargement
+            setTimeout(() => {
+                document.querySelector('.live-placeholder').style.opacity = '1';
+            }, 300);
         });
     </script>
 </body>
