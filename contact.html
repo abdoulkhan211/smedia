@@ -3,505 +3,514 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>S-MEDIA TAHOUA | Contactez-nous</title>
+    <title>S-MEDIA TAHOUA | Contact</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #1a73e8;
-            --secondary: #e94235;
-            --accent: #fbbc05;
-            --dark: #202124;
-            --light: #f8f9fa;
-            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+            --ios-blue: #007AFF;
+            --ios-gray: #F2F2F7;
+            --ios-dark: #1C1C1E;
+            --ios-light: #FFFFFF;
+            --ios-red: #FF3B30;
+            --ios-green: #34C759;
+            --ios-purple: #AF52DE;
+            --ios-card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
         
         body {
-            background-color: var(--light);
-            color: var(--dark);
-            line-height: 1.6;
+            background-color: var(--ios-gray);
+            color: var(--ios-dark);
+            line-height: 1.5;
             min-height: 100vh;
-            padding-bottom: 80px;
+            padding-bottom: 120px;
         }
         
-        header {
-            background: var(--gradient);
-            color: white;
-            padding: 1.5rem;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        /* Style iOS pour la navbar */
+        .ios-navbar {
+            position: sticky;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 12px 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .ios-navbar .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .ios-navbar .logo img {
+            height: 28px;
+            width: auto;
+        }
+        
+        .ios-navbar .logo span {
+            font-weight: 600;
+            font-size: 18px;
+        }
+        
+        /* Contenu principal */
+        .main-content {
+            padding: 16px;
+        }
+        
+        /* Section Hero iOS */
+        .ios-hero {
             position: relative;
-            z-index: 10;
-        }
-        
-        .logo {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
+            height: 200px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-        
-        .logo i {
-            margin-right: 10px;
-            color: var(--accent);
-        }
-        
-        .tagline {
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-        
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: white;
-            display: flex;
-            justify-content: space-around;
-            padding: 12px 0;
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-            z-index: 100;
-        }
-        
-        .nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-decoration: none;
-            color: #5f6368;
-            font-size: 0.8rem;
-            transition: all 0.3s ease;
-        }
-        
-        .nav-item i {
-            font-size: 1.4rem;
-            margin-bottom: 4px;
-        }
-        
-        .nav-item.active {
-            color: var(--primary);
-            transform: translateY(-5px);
-        }
-        
-        .nav-item.active i {
-            color: var(--secondary);
-        }
-        
-        .hero {
-            padding: 4rem 0;
-            background: url('https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
-            position: relative;
-            color: white;
             text-align: center;
+            color: white;
         }
         
-        .hero::before {
+        .ios-hero::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.6);
         }
         
-        .hero-content {
+        .ios-hero-content {
             position: relative;
             z-index: 1;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px;
+            padding: 20px;
         }
         
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+        .ios-hero h1 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
         }
         
-        .hero p {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
+        .ios-hero p {
+            font-size: 16px;
+            opacity: 0.9;
         }
         
-        .contact-section {
-            padding: 3rem 20px;
-            max-width: 1200px;
-            margin: 0 auto;
+        /* Carte iOS */
+        .ios-card {
+            background: var(--ios-light);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 16px;
+            box-shadow: var(--ios-card-shadow);
         }
         
-        .contact-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
+        .ios-card h2 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--ios-blue);
         }
         
-        .contact-info {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .contact-info h2 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary);
-        }
-        
-        .info-item {
+        /* Style des informations de contact */
+        .contact-item {
             display: flex;
             align-items: flex-start;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
+            gap: 12px;
+            margin-bottom: 16px;
         }
         
-        .info-icon {
-            font-size: 1.2rem;
-            color: var(--secondary);
-            margin-top: 0.3rem;
-        }
-        
-        .info-content h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.3rem;
-            color: var(--dark);
-        }
-        
-        .info-content p, .info-content a {
-            color: #555;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        
-        .info-content a:hover {
-            color: var(--primary);
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-        
-        .social-links a {
+        .contact-icon {
+            width: 24px;
+            height: 24px;
+            background: var(--ios-blue);
+            color: white;
+            border-radius: 6px;
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .contact-details h3 {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+        
+        .contact-details p, .contact-details a {
+            color: #636366;
+            text-decoration: none;
+            font-size: 15px;
+        }
+        
+        .contact-details a:hover {
+            color: var(--ios-blue);
+        }
+        
+        /* Réseaux sociaux */
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
             width: 40px;
             height: 40px;
-            background: var(--light);
-            color: var(--primary);
             border-radius: 50%;
-            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            transition: transform 0.2s;
         }
         
         .social-links a:hover {
-            background: var(--primary);
-            color: white;
             transform: translateY(-3px);
         }
         
-        .contact-form {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        /* Formulaire iOS */
+        .ios-form-group {
+            margin-bottom: 16px;
         }
         
-        .contact-form h2 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary);
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group label {
+        .ios-form-group label {
             display: block;
-            margin-bottom: 0.5rem;
+            font-size: 15px;
             font-weight: 500;
-            color: var(--dark);
+            margin-bottom: 6px;
+            color: var(--ios-dark);
         }
         
-        .form-control {
+        .ios-form-control {
             width: 100%;
-            padding: 0.8rem 1rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
+            padding: 12px;
+            border: 1px solid #D1D1D6;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.2s;
         }
         
-        .form-control:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.2);
+        .ios-form-control:focus {
+            border-color: var(--ios-blue);
             outline: none;
         }
         
-        textarea.form-control {
-            min-height: 150px;
+        select.ios-form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 16px;
+        }
+        
+        textarea.ios-form-control {
+            min-height: 120px;
             resize: vertical;
         }
         
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .btn:hover {
-            background: var(--secondary);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(233, 66, 53, 0.3);
-        }
-        
-        .profile-card {
-            margin-top: 2rem;
-            padding: 1.5rem;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .profile-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            color: var(--primary);
-            display: flex;
+        /* Boutons iOS */
+        .ios-button {
+            display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            justify-content: center;
+            width: 100%;
+            padding: 14px;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.2s;
+            margin-bottom: 8px;
+            border: none;
+            cursor: pointer;
         }
         
-        .profile-card p {
-            color: #555;
+        .ios-button i {
+            margin-right: 8px;
         }
         
-        .alert {
-            padding: 1rem;
-            margin-bottom: 1.5rem;
-            border-radius: 5px;
+        .ios-button.blue {
+            background-color: var(--ios-blue);
+            color: white;
+        }
+        
+        .ios-button.green {
+            background-color: var(--ios-green);
+            color: white;
+        }
+        
+        .ios-button.purple {
+            background-color: var(--ios-purple);
+            color: white;
+        }
+        
+        .ios-button:hover {
+            opacity: 0.9;
+            transform: scale(0.98);
+        }
+        
+        /* Tab Bar iOS */
+        .ios-tabbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            display: flex;
+            justify-content: space-around;
+            padding: 8px 0;
+            border-top: 0.5px solid rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+        
+        .ios-tab {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #8E8E93;
+            font-size: 10px;
+            transition: all 0.2s;
+        }
+        
+        .ios-tab i {
+            font-size: 22px;
+            margin-bottom: 2px;
+        }
+        
+        .ios-tab.active {
+            color: var(--ios-blue);
+        }
+        
+        /* Message de formulaire */
+        .form-message {
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 16px;
             display: none;
+            font-size: 14px;
         }
         
-        .alert-success {
-            background-color: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
+        .form-message.success {
+            background-color: rgba(52, 199, 89, 0.1);
+            color: var(--ios-green);
+            border: 1px solid rgba(52, 199, 89, 0.2);
         }
         
-        .alert-error {
-            background-color: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-        }
-        
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
+        .form-message.error {
+            background-color: rgba(255, 59, 48, 0.1);
+            color: var(--ios-red);
+            border: 1px solid rgba(255, 59, 48, 0.2);
         }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <header>
+    <!-- Navbar iOS -->
+    <nav class="ios-navbar">
         <div class="logo">
-            <i class=""></i>
-            <img src="BackgroundEraser_20250503_123458249.png" alt="logo" height="55px"></img>
+            <img src="BackgroundEraser_20250503_123458249.png" alt="Logo S-MEDIA">
             <span>S-MEDIA TAHOUA</span>
         </div>
-        <p class="tagline">Votre plateforme de vidéos à Tahoua, Niger</p>
-    </header>
-    
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Contactez S-MEDIA TAHOUA</h1>
-            <p>Nous sommes à votre écoute pour toutes vos questions et suggestions</p>
+    </nav>
+
+    <!-- Contenu principal -->
+    <div class="main-content">
+        <!-- Hero Section -->
+        <div class="ios-hero" style="background-image: url('https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'); background-size: cover; background-position: center;">
+            <div class="ios-hero-content">
+                <h1>Contactez S-MEDIA TAHOUA</h1>
+                <p>Nous sommes à votre écoute pour toutes vos questions et suggestions</p>
+            </div>
         </div>
-    </section>
-    
-    <main class="contact-section">
-        <div class="contact-container">
-            <div class="contact-info">
-                <h2>Nos coordonnées</h2>
-                
-                <div class="info-item">
-                    <div class="info-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <div class="info-content">
-                        <h3>Adresse</h3>
-                        <p>Tahoua, Niger<br>Quartier Joe Kalé</p>
-                    </div>
+        
+        <!-- Carte de contact -->
+        <div class="ios-card">
+            <h2>Nos coordonnées</h2>
+            
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <i class="fas fa-map-marker-alt"></i>
                 </div>
-                
-                <div class="info-item">
-                    <div class="info-icon">
-                        <i class="fas fa-phone-alt"></i>
-                    </div>
-                    <div class="info-content">
-                        <h3>Téléphone</h3>
-                        <p>
-                            <a href="tel:+22798398908">+227 98 39 89 08</a>
-                        </p>
-                    </div>
-                </div>
-                
-                <div class="info-item">
-                    <div class="info-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <div class="info-content">
-                        <h3>Email</h3>
-                        <p>
-                            <a href="mailto:smedia.tn2@gmail.com">smedia.tn2@gmail.com</a>
-                        </p>
-                    </div>
-                </div>
-                
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-tiktok"></i></a>
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="https://youtube.com/@s-mediatahoua"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-telegram"></i></a>
+                <div class="contact-details">
+                    <h3>Adresse</h3>
+                    <p>Tahoua, Niger<br>Quartier Joe Kalé</p>
                 </div>
             </div>
             
-                           
-                <div class="contact-form">
-    <h2>Contactez S-MEDIA</h2>
-    
-    <div id="formMessage" style="display:none; margin:1rem 0; padding:1rem; border-radius:5px;"></div>
-    
-    <form id="androminForm" action="https://formsubmit.co/smedia.tn2@gmail.com" method="POST">
-        <input type="hidden" name="_next" value="https://andromin.vercel.app/merci.html">
-        <!-- Configuration testée -->
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_subject" value="Nouveau message ANDROMIN">
-        <input type="hidden" name="_cc" value="andromintv@gmail.com">
-        <input type="hidden" name="_replyto" value="%email%">
-        
-        <!-- Champs obligatoires -->
-        <div class="form-group">
-            <label>Nom Complet*</label>
-            <input type="text" name="Nom" class="form-control" required>
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <i class="fas fa-phone-alt"></i>
+                </div>
+                <div class="contact-details">
+                    <h3>Téléphone</h3>
+                    <p><a href="tel:+22798398908">+227 98 39 89 08</a></p>
+                </div>
+            </div>
+            
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div class="contact-details">
+                    <h3>Email</h3>
+                    <p><a href="mailto:smedia.tn2@gmail.com">smedia.tn2@gmail.com</a></p>
+                </div>
+            </div>
+            
+            <div class="social-links">
+                <a href="#" style="background-color: #000000;"><i class="fab fa-tiktok"></i></a>
+                <a href="#" style="background-color: #1877F2;"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" style="background-color: #E4405F;"><i class="fab fa-instagram"></i></a>
+                <a href="https://youtube.com/@s-mediatahoua" style="background-color: #FF0000;"><i class="fab fa-youtube"></i></a>
+                <a href="#" style="background-color: #0088CC;"><i class="fab fa-telegram"></i></a>
+            </div>
         </div>
         
-        <div class="form-group">
-            <label>Email*</label>
-            <input type="email" name="Email" class="form-control" required>
-        </div>
-        
-        <div class="form-group">
-            <label>Téléphone</label>
-            <input type="tel" name="Téléphone" class="form-control">
-        </div>
-        
-        <div class="form-group">
-            <label>Sujet*</label>
-            <select name="Sujet" class="form-control" required>
-                <option value="">-- Sélectionnez --</option>
-                <option value="Support">Support Technique</option>
-                <option value="Cours">Demande de Cours</option>
-            </select>
-        </div>
-        
-        <div class="form-group">
-            <label>Message*</label>
-            <textarea name="Message" class="form-control" rows="5" required></textarea>
-        </div>
-        
-        <button type="submit" class="btn">
-            <i class="fas fa-paper-plane"></i> Envoyer
+        <!-- Boutons supplémentaires -->
+        <button class="ios-button purple" onclick="window.open('https://anex-bus.vercel.app', '_blank')">
+            <i class="fas fa-external-link-alt"></i> Contacter ANEX
         </button>
-    </form>
-</div>
- <nav class="bottom-nav">
-        <a href="index.html" class="nav-item">
+        
+        <a href="https://wa.me/22786508682" class="ios-button green">
+            <i class="fab fa-whatsapp"></i> WhatsApp +227 86 50 86 82
+        </a>
+        
+        <!-- Formulaire de contact -->
+        <div class="ios-card">
+            <h2>Envoyez-nous un message</h2>
+            
+            <div id="formMessage" class="form-message"></div>
+            
+            <form id="contactForm" action="https://formsubmit.co/smedia.tn2@gmail.com" method="POST">
+                <input type="hidden" name="_next" value="https://andromin.vercel.app/merci.html">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_subject" value="Nouveau message S-MEDIA">
+                
+                <div class="ios-form-group">
+                    <label>Nom Complet*</label>
+                    <input type="text" name="Nom" class="ios-form-control" required>
+                </div>
+                
+                <div class="ios-form-group">
+                    <label>Email*</label>
+                    <input type="email" name="Email" class="ios-form-control" required>
+                </div>
+                
+                <div class="ios-form-group">
+                    <label>Téléphone</label>
+                    <input type="tel" name="Téléphone" class="ios-form-control">
+                </div>
+                
+                <div class="ios-form-group">
+                    <label>Sujet*</label>
+                    <select name="Sujet" class="ios-form-control" required>
+                        <option value="">-- Sélectionnez --</option>
+                        <option value="Support">Support Technique</option>
+                        <option value="Cours">Demande de Cours</option>
+                    </select>
+                </div>
+                
+                <div class="ios-form-group">
+                    <label>Message*</label>
+                    <textarea name="Message" class="ios-form-control" required></textarea>
+                </div>
+                
+                <button type="submit" class="ios-button blue">
+                    <i class="fas fa-paper-plane"></i> Envoyer le message
+                </button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Tab Bar iOS -->
+    <nav class="ios-tabbar">
+        <a href="index.html" class="ios-tab">
             <i class="fas fa-home"></i>
             <span>Accueil</span>
         </a>
-        <a href="videos.html" class="nav-item">
+        <a href="videos.html" class="ios-tab">
             <i class="fas fa-play-circle"></i>
             <span>Vidéos</span>
         </a>
-
-     <a href="live.html" class="nav-item active">
+        <a href="live.html" class="ios-tab active">
             <i class="fas fa-broadcast-tower"></i>
             <span>Direct</span>
-     </a>
-        <a href="app.html" class="nav-item">
+        </a>
+        <a href="app.html" class="ios-tab">
             <i class="fas fa-mobile-alt"></i>
             <span>App</span>
         </a>
-        <a href="contact.html" class="nav-item active">
+        <a href="contact.html" class="ios-tab">
             <i class="fas fa-envelope"></i>
             <span>Contact</span>
         </a>
     </nav>
-<script>
-document.getElementById('androminForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const form = e.target;
-    const btn = form.querySelector('button[type="submit"]');
-    const originalText = btn.innerHTML;
-    
-    // Afficher le chargement
-    btn.disabled = true;
-    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi...';
-    
-    fetch(form.action, {
-        method: 'POST',
-        body: new FormData(form),
-    })
-    .then(response => {
-        if(response.ok) {
-            showAlert('Message envoyé avec succès!', 'success');
-            form.reset();
-        } else {
-            throw new Error();
-        }
-    })
-    .catch(() => {
-        showAlert('Erreur: Veuillez nous contacter directement', 'error');
-    })
-    .finally(() => {
-        btn.disabled = false;
-        btn.innerHTML = originalText;
-    });
-});
 
-function showAlert(message, type) {
-    const alert = document.getElementById('formMessage');
-    alert.textContent = message;
-    alert.style.display = 'block';
-    alert.style.background = type === 'success' ? '#d4edda' : '#f8d7da';
-    alert.style.color = type === 'success' ? '#155724' : '#721c24';
-    setTimeout(() => alert.style.display = 'none', 5000);
-}
-</script>
+    <script>
+        // Gestion du formulaire
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const form = e.target;
+            const btn = form.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            const messageDiv = document.getElementById('formMessage');
+            
+            // Afficher le chargement
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
+            
+            fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+            })
+            .then(response => {
+                if(response.ok) {
+                    showMessage('Message envoyé avec succès!', 'success');
+                    form.reset();
+                } else {
+                    throw new Error();
+                }
+            })
+            .catch(() => {
+                showMessage('Erreur: Veuillez nous contacter directement', 'error');
+            })
+            .finally(() => {
+                btn.disabled = false;
+                btn.innerHTML = originalText;
+            });
+        });
+        
+        function showMessage(message, type) {
+            const messageDiv = document.getElementById('formMessage');
+            messageDiv.textContent = message;
+            messageDiv.className = `form-message ${type}`;
+            messageDiv.style.display = 'block';
+            
+            setTimeout(() => {
+                messageDiv.style.display = 'none';
+            }, 5000);
+        }
+    </script>
 </body>
 </html>
