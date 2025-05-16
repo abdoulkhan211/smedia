@@ -164,6 +164,44 @@
             opacity: 0.9;
             transform: scale(0.98);
         }
+
+
+
+        .google-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 24px;
+            background-color: #4285F4;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-family: 'Arial', sans-serif;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .google-btn:hover {
+            background-color: #3367D6;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .google-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 3px rgba(0,0,0,0.2);
+        }
+        
+        .google-icon {
+            margin-right: 12px;
+            font-size: 20px;
+        }
+    
+
         
         /* Style iOS pour la barre de recherche */
         .ios-search {
@@ -286,12 +324,16 @@
     <div class="preloader" id="preloader">
         <img src="./BackgroundEraser_20250503_123458249.png" alt="Logo S-MEDIA" width="80">
         <div class="dots-loader">
-            <span></span>
-            <span></span>
+            <span>Bienvenue</span>
+            <span>From ANEX</span>
             <span></span>
         </div>
     </div>
-
+<!-- Bouton avec redirection vers Google -->
+    <a href="https://www.google.com" target="_blank" class="google-btn">
+        <i class="fab fa-google google-icon"></i>
+        navigation sur google avec ANEX +
+    </a>
     <!-- Navbar iOS -->
     <nav class="ios-navbar">
         <div class="logo">
