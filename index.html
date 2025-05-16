@@ -3,455 +3,288 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>S-MEDIA TAHOUA | Contactez-nous</title>
+    <title>S-MEDIA TAHOUA | Accueil</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #1a73e8;
-            --secondary: #e94235;
-            --accent: #fbbc05;
-            --dark: #202124;
-            --light: #f8f9fa;
-            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+            --ios-blue: #007AFF;
+            --ios-gray: #F2F2F7;
+            --ios-dark: #1C1C1E;
+            --ios-light: #FFFFFF;
+            --ios-red: #FF3B30;
+            --ios-green: #34C759;
+            --ios-yellow: #FFCC00;
+            --ios-card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
         
         body {
-            background-color: var(--light);
-            color: var(--dark);
-            line-height: 1.6;
+            background-color: var(--ios-gray);
+            color: var(--ios-dark);
+            line-height: 1.5;
             min-height: 100vh;
             padding-bottom: 80px;
         }
         
-        header {
-            background: var(--gradient);
-            color: white;
-            padding: 1.5rem;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            position: relative;
-            z-index: 10;
+        /* Style iOS pour la navbar */
+        .ios-navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 12px 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
         }
         
-        .logo {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
+        .ios-navbar .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .ios-navbar .logo img {
+            height: 28px;
+            width: auto;
+        }
+        
+        .ios-navbar .logo span {
+            font-weight: 600;
+            font-size: 18px;
+        }
+        
+        /* Contenu principal avec padding pour éviter le chevauchement */
+        .main-content {
+            padding: 70px 16px 90px;
+        }
+        
+        /* Style iOS pour les sections */
+        .ios-section {
+            margin-bottom: 16px;
+        }
+        
+        .ios-section-title {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            padding-left: 16px;
+        }
+        
+        /* Carte iOS pour le programme */
+        .program-card {
+            background: var(--ios-light);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--ios-card-shadow);
+            margin-bottom: 16px;
+        }
+        
+        .program-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        
+        .program-details {
+            padding: 16px;
+        }
+        
+        .program-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .program-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            color: #8E8E93;
+            font-size: 14px;
+        }
+        
+        .program-meta i {
+            margin-right: 4px;
+        }
+        
+        .program-description {
+            color: #636366;
+            margin-bottom: 16px;
+            font-size: 15px;
+        }
+        
+        /* Boutons iOS */
+        .ios-button-group {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+        }
+        
+        .ios-button {
+            flex: 1;
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 15px;
+            text-decoration: none;
+            transition: all 0.2s;
         }
         
-        .logo i {
-            margin-right: 10px;
-            color: var(--accent);
+        .ios-button i {
+            margin-right: 8px;
         }
         
-        .tagline {
-            font-size: 0.9rem;
+        .ios-button.youtube {
+            background-color: var(--ios-red);
+            color: white;
+        }
+        
+        .ios-button.facebook {
+            background-color: #1877F2;
+            color: white;
+        }
+        
+        .ios-button:hover {
             opacity: 0.9;
+            transform: scale(0.98);
         }
-
-        /* Réinitialisation des marges */
-        body, html {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
+        
+        /* Style iOS pour la barre de recherche */
+        .ios-search {
+            position: relative;
+            margin-bottom: 16px;
         }
-
-        /* Style du preloader */
+        
+        .ios-search input {
+            width: 100%;
+            padding: 10px 16px 10px 40px;
+            background-color: var(--ios-light);
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            box-shadow: var(--ios-card-shadow);
+        }
+        
+        .ios-search i {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #8E8E93;
+        }
+        
+        /* Style iOS pour la bottom tab bar */
+        .ios-tabbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            display: flex;
+            justify-content: space-around;
+            padding: 8px 0;
+            border-top: 0.5px solid rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+        
+        .ios-tab {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #8E8E93;
+            font-size: 10px;
+            transition: all 0.2s;
+        }
+        
+        .ios-tab i {
+            font-size: 22px;
+            margin-bottom: 2px;
+        }
+        
+        .ios-tab.active {
+            color: var(--ios-blue);
+        }
+        
+        /* Animation pour le preloader */
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; visibility: hidden; }
+        }
+        
         .preloader {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: #f5f5f5;
+            background: var(--ios-light);
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
             z-index: 9999;
-            transition: opacity 0.5s ease;
         }
-
-        /* Animation des points */
+        
+        .preloader.fade-out {
+            animation: fadeOut 0.5s forwards;
+        }
+        
         .dots-loader {
             display: flex;
             gap: 8px;
             margin-top: 20px;
         }
-
+        
         .dots-loader span {
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            background: #1877f2;
+            background: var(--ios-blue);
             display: inline-block;
             animation: bounce 1.4s infinite ease-in-out;
         }
-
+        
         .dots-loader span:nth-child(1) {
             animation-delay: 0s;
         }
-
+        
         .dots-loader span:nth-child(2) {
             animation-delay: 0.2s;
         }
-
+        
         .dots-loader span:nth-child(3) {
             animation-delay: 0.4s;
         }
-
+        
         @keyframes bounce {
             0%, 100% { transform: translateY(0); opacity: 0.6; }
             50% { transform: translateY(-10px); opacity: 1; }
         }
-
-        /* Logo ou image de chargement */
-        .preloader img {
-            width: 100px;
-            height: auto;
-            margin-bottom: 20px;
-        }
-
-        /* Contenu principal */
-        .main-content {
-            display: none;
-            padding: 20px;
-        }
-        
-        /* Barre de recherche */
-        .search-container {
-            position: relative;
-            margin: 20px auto;
-            max-width: 600px;
-            padding: 0 20px;
-        }
-        
-        #searchInput {
-            width: 100%;
-            padding: 12px 20px;
-            border: 1px solid #ddd;
-            border-radius: 25px;
-            font-size: 16px;
-            box-sizing: border-box;
-            outline: none;
-            transition: all 0.3s;
-        }
-        
-        #searchInput:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 5px rgba(26, 115, 232, 0.5);
-        }
-        
-        #searchResults {
-            position: absolute;
-            width: calc(100% - 40px);
-            max-height: 300px;
-            overflow-y: auto;
-            border: 1px solid #ddd;
-            border-top: none;
-            border-radius: 0 0 5px 5px;
-            background: white;
-            z-index: 1000;
-            display: none;
-            margin-top: -5px;
-        }
-        
-        .result-item {
-            padding: 10px;
-            cursor: pointer;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .result-item:hover {
-            background-color: #f5f5f5;
-        }
-        
-        .no-results {
-            padding: 10px;
-            color: #777;
-            font-style: italic;
-        }
-        
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: white;
-            display: flex;
-            justify-content: space-around;
-            padding: 12px 0;
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-            z-index: 100;
-        }
-        
-        .nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-decoration: none;
-            color: #5f6368;
-            font-size: 0.8rem;
-            transition: all 0.3s ease;
-        }
-        
-        .nav-item i {
-            font-size: 1.4rem;
-            margin-bottom: 4px;
-        }
-        
-        .nav-item.active {
-            color: var(--primary);
-            transform: translateY(-5px);
-        }
-        
-        .nav-item.active i {
-            color: var(--secondary);
-        }
-        
-        .hero {
-            padding: 4rem 0;
-            background: url('https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
-            position: relative;
-            color: white;
-            text-align: center;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .hero p {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .contact-section {
-            padding: 3rem 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .contact-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-        
-        .contact-info {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .contact-info h2 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary);
-        }
-        
-        .info-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .info-icon {
-            font-size: 1.2rem;
-            color: var(--secondary);
-            margin-top: 0.3rem;
-        }
-        
-        .info-content h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.3rem;
-            color: var(--dark);
-        }
-        
-        .info-content p, .info-content a {
-            color: #555;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        
-        .info-content a:hover {
-            color: var(--primary);
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-        
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: var(--light);
-            color: var(--primary);
-            border-radius: 50%;
-            transition: all 0.3s ease;
-        }
-        
-        .social-links a:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-3px);
-        }
-        
-        .contact-form {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .contact-form h2 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary);
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-            color: var(--dark);
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-        
-        .form-control:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.2);
-            outline: none;
-        }
-        
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .btn:hover {
-            background: var(--secondary);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(233, 66, 53, 0.3);
-        }
-        
-        .profile-card {
-            margin-top: 2rem;
-            padding: 1.5rem;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .profile-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .profile-card p {
-            color: #555;
-        }
-        
-        .alert {
-            padding: 1rem;
-            margin-bottom: 1.5rem;
-            border-radius: 5px;
-            display: none;
-        }
-        
-        .alert-success {
-            background-color: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-        }
-        
-        .alert-error {
-            background-color: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-        }
-        
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
-        }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-
-    <!-- Écran de chargement -->
+    <!-- Preloader -->
     <div class="preloader" id="preloader">
-        <img src="./BackgroundEraser_20250503_123458249.png" alt="Logo du site">
+        <img src="./BackgroundEraser_20250503_123458249.png" alt="Logo S-MEDIA" width="80">
         <div class="dots-loader">
             <span></span>
             <span></span>
@@ -459,172 +292,107 @@
         </div>
     </div>
 
+    <!-- Navbar iOS -->
+    <nav class="ios-navbar">
+        <div class="logo">
+            <img src="./BackgroundEraser_20250503_123458249.png" alt="Logo S-MEDIA">
+            <span>S-MEDIA TAHOUA</span>
+        </div>
+    </nav>
+
     <!-- Contenu principal -->
     <div class="main-content" id="mainContent">
-        <header>
-            <div class="logo">
-                <img src="./BackgroundEraser_20250503_123458249.png" alt="logo" height="55">
-                <span>S-MEDIA TAHOUA</span>
-            </div>
-            <p class="tagline">Votre plateforme de vidéos à Tahoua, Niger</p>
-        </header>
-        
-        <!-- Barre de recherche -->
-        <div class="search-container">
-            <input type="search" id="searchInput" placeholder="Rechercher des vidéos...">
-            <div id="searchResults"></div>
+        <!-- Barre de recherche iOS -->
+        <div class="ios-search">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Rechercher des vidéos...">
         </div>
-        
-        <section class="hero">
-            <div class="hero-content">
-                <h1>Bienvenue sur S-MEDIA TAHOUA</h1>
-                <p>Nous sommes à votre écoute pour toutes vos questions et suggestions</p>
-            </div>
-        </section>
-        
-        <main class="contact-section">
-            <div class="contact-info">
-                <h2>Nos réseaux sociaux</h2>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-tiktok"></i></a>
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="https://youtube.com/@s-mediatahoua"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-telegram"></i></a>
+
+        <!-- Section Programme -->
+        <h2 class="ios-section-title">Programme du jour</h2>
+        <div class="program-card">
+            <img src="https://via.placeholder.com/600x400?text=Programme+S-MEDIA" alt="Programme" class="program-image">
+            <div class="program-details">
+                <h3 class="program-title">Émission spéciale sur la culture Tahoua</h3>
+                <div class="program-meta">
+                    <span><i class="far fa-calendar-alt"></i> 15 Juin 2023</span>
+                    <span><i class="far fa-clock"></i> 20:00 - 22:00</span>
+                </div>
+                <p class="program-description">
+                    Une émission spéciale dédiée à la riche culture de Tahoua, avec des invités exceptionnels et des performances live.
+                </p>
+                
+                <!-- Boutons YouTube et Facebook -->
+                <div class="ios-button-group">
+                    <a href="https://youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="ios-button youtube">
+                        <i class="fab fa-youtube"></i> YouTube
+                    </a>
+                    <a href="https://facebook.com/watch/?v=123456789" target="_blank" class="ios-button facebook">
+                        <i class="fab fa-facebook-f"></i> Facebook
+                    </a>
                 </div>
             </div>
-        </main>
+        </div>
+
+        <!-- Section Vidéos récentes -->
+        <h2 class="ios-section-title">Vidéos récentes</h2>
+        <div class="program-card">
+            <img src="https://via.placeholder.com/600x400?text=Vidéo+1" alt="Vidéo 1" class="program-image">
+            <div class="program-details">
+                <h3 class="program-title">Reportage sur le marché de Tahoua</h3>
+                <div class="program-meta">
+                    <span><i class="far fa-clock"></i> 15 min</span>
+                    <span><i class="far fa-eye"></i> 12.4K vues</span>
+                </div>
+                <div class="ios-button-group">
+                    <a href="https://youtube.com/watch?v=autre_video" target="_blank" class="ios-button youtube">
+                        <i class="fab fa-youtube"></i> Regarder
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
-    
-    <nav class="bottom-nav">
-        <a href="index.html" class="nav-item">
+
+    <!-- Tab Bar iOS -->
+    <nav class="ios-tabbar">
+        <a href="index.html" class="ios-tab active">
             <i class="fas fa-home"></i>
             <span>Accueil</span>
         </a>
-        <a href="videos.html" class="nav-item">
+        <a href="videos.html" class="ios-tab">
             <i class="fas fa-play-circle"></i>
             <span>Vidéos</span>
         </a>
-
-        <a href="live.html" class="nav-item active">
+        <a href="live.html" class="ios-tab">
             <i class="fas fa-broadcast-tower"></i>
             <span>Direct</span>
         </a>
-        <a href="app.html" class="nav-item">
+        <a href="app.html" class="ios-tab">
             <i class="fas fa-mobile-alt"></i>
             <span>App</span>
         </a>
-        <a href="contact.html" class="nav-item active">
+        <a href="contact.html" class="ios-tab">
             <i class="fas fa-envelope"></i>
             <span>Contact</span>
         </a>
     </nav>
 
-<script>
-    // Gestion du preloader
-    document.addEventListener('DOMContentLoaded', function() {
-        setTimeout(function() {
-            const preloader = document.getElementById('preloader');
-            const mainContent = document.getElementById('mainContent');
-            
-            preloader.style.opacity = '0';
-            preloader.style.visibility = 'hidden';
-            
-            mainContent.style.display = 'block';
-        }, 2000);
-    });
-
-    // Fonctionnalité de recherche
-    document.addEventListener('DOMContentLoaded', function() {
-        const searchInput = document.getElementById('searchInput');
-        const searchResults = document.getElementById('searchResults');
-        
-        // Données de démo pour la recherche (à remplacer par vos données réelles)
-        const searchData = [
-            { title: "Vidéo 1", tags: ["culture", "tahoua"], url: "video1.html" },
-            { title: "Vidéo 2", tags: ["musique", "niger"], url: "video2.html" },
-            { title: "Reportage", tags: ["actualité", "tahoua"], url: "reportage.html" }
-        ];
-        
-        searchInput.addEventListener('input', function() {
-            const query = this.value.toLowerCase();
-            
-            if (query.length > 0) {
-                const results = searchData.filter(item => 
-                    item.title.toLowerCase().includes(query) || 
-                    item.tags.some(tag => tag.toLowerCase().includes(query))
-                );
+    <script>
+        // Gestion du preloader
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const preloader = document.getElementById('preloader');
+                preloader.classList.add('fade-out');
                 
-                displayResults(results);
-            } else {
-                searchResults.style.display = 'none';
-            }
-        });
-        
-        function displayResults(results) {
-            searchResults.innerHTML = '';
-            
-            if (results.length === 0) {
-                const noResults = document.createElement('div');
-                noResults.className = 'no-results';
-                noResults.textContent = 'Aucun résultat trouvé';
-                searchResults.appendChild(noResults);
-            } else {
-                results.forEach(result => {
-                    const resultItem = document.createElement('a');
-                    resultItem.className = 'result-item';
-                    resultItem.textContent = result.title;
-                    resultItem.href = result.url;
-                    
-                    searchResults.appendChild(resultItem);
-                });
-            }
-            
-            searchResults.style.display = 'block';
-        }
-        
-        // Fermer les résultats quand on clique ailleurs
-        document.addEventListener('click', function(e) {
-            if (!searchResults.contains(e.target) && e.target !== searchInput) {
-                searchResults.style.display = 'none';
-            }
-        });
-    });
-
-    // Gestion du formulaire (si vous en avez un)
-    const form = document.getElementById('androminForm');
-    if (form) {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const btn = form.querySelector('button[type="submit"]');
-            const originalText = btn.innerHTML;
-            
-            btn.disabled = true;
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi...';
-            
-            // Simulation d'envoi (à remplacer par un vrai fetch)
-            setTimeout(() => {
-                showAlert('Message envoyé avec succès!', 'success');
-                form.reset();
-                btn.disabled = false;
-                btn.innerHTML = originalText;
+                document.getElementById('mainContent').style.display = 'block';
             }, 1500);
         });
-    }
-    
-    function showAlert(message, type) {
-        const alert = document.createElement('div');
-        alert.className = `alert alert-${type}`;
-        alert.textContent = message;
-        alert.style.display = 'block';
+
+        // Remplacez ces URLs par vos vraies URLs de vidéos
+        const youtubeVideoURL = "https://youtube.com/watch?v=votre_video_id";
+        const facebookVideoURL = "https://facebook.com/watch/?v=votre_video_id";
         
-        document.body.appendChild(alert);
-        
-        setTimeout(() => {
-            alert.style.opacity = '0';
-            setTimeout(() => alert.remove(), 500);
-        }, 5000);
-    }
-</script>
+        // Vous pouvez ajouter d'autres fonctionnalités JavaScript ici
+    </script>
 </body>
 </html>
